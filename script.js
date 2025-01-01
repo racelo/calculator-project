@@ -21,3 +21,8 @@ function multiply(a, b) {
 function divide(a, b) {
   return b / a;
 }
+
+// Step 2: Create 3 variables for each part of operation
+let num1;
+let num2;
+let operator;
