@@ -1,0 +1,14 @@
+* {
+    font-size: 25px;
+}
+
+.calc {
+    display: flex;
+    width: 130px;
+}
+
+span {
+    display: block;
+    width: 120px;
+    height: 30px; 
+}
