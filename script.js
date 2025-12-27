@@ -52,18 +52,29 @@ let operator;
 let lastBtnClicked;
 
 
+
 buttons.forEach(button => button.addEventListener("click", calculateNum));
 
+// Add a +/- button to give a negative or positive sign to a value
+
 function calculateNum(e) {
-    let currentText = display.textContent;
     
+
+    if(e.target.id === "negate" && display.textContent) {
+        if(display.textContent.includes("-")) {
+            display.textContent = display.textContent.replace("-", "");
+        } else {
+            display.textContent = `-${display.textContent}`;
+        }
+    }
+
     if (lastBtnClicked === "operator") {
         display.textContent = "";
     }
 
     if (e.target.className === "num") {
         display.textContent += e.target.textContent;
-    } else if (e.target.className === "operator" && currentText) {
+    } else if (e.target.className === "operator" && display.textContent) {
         if (!mathObj.n1) {
             mathObj.n1 = Number(display.textContent);
             operator = e.target.id;
@@ -84,6 +95,7 @@ function calculateNum(e) {
     }
     
     lastBtnClicked = e.target.className;
+
 }
 
 
