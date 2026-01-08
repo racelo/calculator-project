@@ -51,15 +51,16 @@ const display = document.getElementById("displayText");
 let operator;
 let lastBtnClicked;
 
-
-
 buttons.forEach(button => button.addEventListener("click", calculateNum));
 
 // Add a +/- button to give a negative or positive sign to a value
 
 function calculateNum(e) {
     
-
+    if (lastBtnClicked === "operator") {
+        display.textContent = "";
+    }
+    
     if(e.target.id === "negate" && display.textContent) {
         if(display.textContent.includes("-")) {
             display.textContent = display.textContent.replace("-", "");
@@ -68,9 +69,14 @@ function calculateNum(e) {
         }
     }
 
-    if (lastBtnClicked === "operator") {
-        display.textContent = "";
+    if(e.target.id === "dot") {
+        if(!display.textContent) {
+            display.textContent = `0${e.target.textContent}`;
+        } else if(!display.textContent.includes(".")) {
+            display.textContent += e.target.textContent;
+        }
     }
+
 
     if (e.target.className === "num") {
         display.textContent += e.target.textContent;
