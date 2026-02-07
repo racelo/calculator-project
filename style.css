@@ -1,14 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
 * {
+    box-sizing: border-box;
+}
+
+
+span {
+    display: flex;
+    width: 120px;
+    height: 30px; 
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    height: 630px;
+    border: 8px solid #000;
+    border-radius: 20px;
+    background-color: rgb(246, 239, 234);
+    /* margin: 0 auto; */
+}
+
+#displayText {
+    border: 5px solid #000;
+    border-radius: 15px;
+    flex-grow: 1;
+    width: 90%;
+    margin-top: 10px;
+    font-size: 40px;
+    background-color: rgb(202, 208,183);
+    font-family: "Electrolize", Arial, Helvetica, sans-serif;
+}
+
+.calc >* {
     font-size: 25px;
 }
 
 .calc {
     display: flex;
-    width: 130px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 20px;
+    background-color: rgb(226, 215, 203);
+    border-radius: 15px;
+    padding: 10px 0;
+    width: 90%;
 }
 
-span {
-    display: block;
-    width: 120px;
-    height: 30px; 
+button {
+    /* width: 25%; */
+    margin: 5px 0;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+}
+
+button#zero {
+    width: 125px;
+    height: 65px;
+    border-radius: 30px;
+}
+
+button.nan, button.operator {
+    background-color: rgb(227, 183, 126);
+    color: white;
+}
+
+button#clear {
+    background-color: rgb(222, 117, 66);
 }
