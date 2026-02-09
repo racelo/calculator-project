@@ -1,7 +1,7 @@
 const mathObj = {
-    n1: 0,
-    n2: 0,
-    result: 0,
+    n1: null,
+    n2: null,
+    result: null,
     add: function(n1, n2) {
         return this.n1 + this.n2;
     },
@@ -19,8 +19,11 @@ const mathObj = {
     },
 
     operate: function(operator, n1, n2) {
-        console.log(`op: ${operator}, n1: ${n1}, n2: ${n2}`);
-        return this[operator](n1, n2);
+        if(operator === "divide" && n2 === 0) {
+            return "Error";
+        } else {
+            return this[operator](n1, n2);
+        }  
     },
 }
 
@@ -39,7 +42,7 @@ function calculateNum(e) {
     if(e.target.id === "clear") {
         display.textContent = 0;
         operator = null;
-        mathObj.n1 = 0;
+        mathObj.n1 = null;
     }
     
     if (lastBtnClicked === "operator") {
@@ -63,11 +66,11 @@ function calculateNum(e) {
     }
 
     if (e.target.className === "num") {
-        if(display.textContent === "0") {
+        if(display.textContent === "0" || display.textContent === "Error") {
             display.textContent = "";
         }
         display.textContent += e.target.textContent;
-    } else if (e.target.className === "operator" && display.textContent !== "0") {
+    } else if (e.target.className === "operator") {
         if(!mathObj.n1 && lastBtnClicked === "equal") {
             mathObj.n1 = Number(display.textContent);
             operator = e.target.id;
@@ -77,17 +80,29 @@ function calculateNum(e) {
         } else if (!mathObj.n2) {
             mathObj.n2 = Number(display.textContent);
             result = mathObj.operate(operator, mathObj.n1, mathObj.n2);
-            display.textContent = result % 1 !== 0 ? parseFloat(result.toFixed(10)): result;
-            operator = e.target.id;
-            mathObj.n1 = result;
-            mathObj.n2 = 0;
+            if(result === "Error") {
+                display.textContent = result;
+                mathObj.n1 = null;
+                mathObj.n2 = null;
+                operator = null;
+            } else {
+                display.textContent = result % 1 !== 0 ? parseFloat(result.toFixed(10)): result;
+                operator = e.target.id;
+                mathObj.n1 = result;
+                mathObj.n2 = null;
+            }
         }        
-    } else if (e.target.id === "equal" && mathObj.n1) {
+    } else if (e.target.id === "equal" && mathObj.n1 !== null) {
         mathObj.n2 = Number(display.textContent);
         result = mathObj.operate(operator, mathObj.n1, mathObj.n2);
-        display.textContent = result % 1 !== 0 ? parseFloat(result.toFixed(10)): result;
-        mathObj.n1 = 0;
-        mathObj.n2 = 0;
+        if(result === "Error") {
+            display.textContent = result;
+        } else {
+            display.textContent = result % 1 !== 0 ? parseFloat(result.toFixed(10)): result;
+        }
+        mathObj.n1 = null;
+        mathObj.n2 = null;
+        operator = null;
     }
     
     lastBtnClicked = e.target.className;
