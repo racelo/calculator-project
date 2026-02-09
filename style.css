@@ -5,41 +5,39 @@
 }
 
 body {
+    background-color: #ab3434;
+    height: 100vh;
+}
+
+body, .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100dvh;
-    flex-direction: column;
-    background-color:  	#ab3434;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     width: 400px;
     height: 620px;
+    margin: 0 auto;
     border: 8px solid #1c1919;
     border-radius: 20px;
     background-color:#0e367c;
-    margin: 0 auto;
 }
 
 #displayText {
     display: flex;
-    width: 120px;
-    height: 30px; 
+    flex-grow: 1;
     justify-content: flex-end;
     align-items: flex-end;
-    border: 5px solid #4874bf;
-    border-radius: 15px;
-    flex-grow: 1;
     width: 90%;
     margin-top: 20px;
-    font-size: 35px;
-    background-color: #d2d4e1;
+    border: 5px solid #4874bf;
+    border-radius: 15px;
     font-family: "Electrolize", Arial, Helvetica, sans-serif;
+    font-size: 35px;
     overflow: hidden;
+    background-color: #d2d4e1;
 }
 
 .calc >* {
@@ -51,20 +49,20 @@ body {
     justify-content: space-evenly;
     flex-wrap: wrap;
     margin: 20px;
-    background-color: #ededed;
+    border: 5px solid #4874bf;
     border-radius: 15px;
     padding: 10px 10px;
-    border: 5px solid #4874bf;
+    background-color: #ededed;
 }
 
 button {
-    margin: 5px 0;
     width: 70px;
     height: 70px;
+    margin: 5px 0;
     border-radius: 50%;
     font-family: "Noto Sans", Arial, Helvetica, sans-serif;
-    background-color: #666666;
     color: white;
+    background-color: #666666;
 }
 
 button#zero {
@@ -74,23 +72,23 @@ button#zero {
 }
 
 button.nan, button.operator, button.equal {
-    background-color: #f44242;
     color: white;
+    background-color: #f44242;
 }
 
 button#clear {
-    background-color:#fba257;
     width: 45%;
     height: 70px;
     border-radius: 30px;
+    background-color:#fba257;
 }
 
 footer {
     margin-top: 50px;
-    color: #ededed;
     font-family: "Noto Sans", Arial, Helvetica, sans-serif;
     font-size: 18px;
     font-weight: 600;
+    color: #ededed;
 }
 
 
