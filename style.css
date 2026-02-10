@@ -75,11 +75,7 @@ button.nan, button.operator, button.equal {
     color: white;
     background-color: #f44242;
 }
-
-button#clear {
-    width: 45%;
-    height: 70px;
-    border-radius: 30px;
+button#clear, button#backspace {
     background-color:#fba257;
 }
 

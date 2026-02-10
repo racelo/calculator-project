@@ -44,6 +44,14 @@ function calculateNum(e) {
         operator = null;
         mathObj.n1 = null;
     }
+
+    if(e.target.id === "backspace") {
+        if(display.textContent.length === 1 || display.textContent === 0) {
+            display.textContent = 0;
+        } else {
+            display.textContent = display.textContent.slice(0, display.textContent.length - 1);
+        }
+    }
     
     if (lastBtnClicked === "operator") {
         display.textContent = "";
